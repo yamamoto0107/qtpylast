@@ -1,7 +1,8 @@
 """
+山本、なぐら
 大規模python開発に挑戦！
 要件定義
-・データベース(sql):attendテーブル、recordテーブル、holidayテーブル
+・データベース(sql):attendsystem.dbにattendテーブル、recordテーブル、holidayテーブル
 ・起動時に、「出席登録」「公欠登録」「出席率確認」「教員はこちら(学生登録・情報修正)」
 　のボタンを用意する。
 ・どの機能もエラー対策をしておく。
@@ -65,6 +66,8 @@ import sqlite3
 import datetime
 import jpholiday
 from PyQt6.QtWidgets import QPushButton
+import face_recognition_test as ft
+
 root = Tk()
 monitor_height = root.winfo_screenheight()
 monitor_width = root.winfo_screenwidth()
