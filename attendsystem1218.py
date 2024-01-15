@@ -1,6 +1,7 @@
 """
-國本
-
+=======
+山本、
+>>>>>>> b7feece67ca2df9cc7ccac6de686858ecb5856ed
 大規模python開発に挑戦！
 要件定義
 ・データベース(sql):attendテーブル、recordテーブル、holidayテーブル
@@ -92,32 +93,13 @@ class Main(QWidget):
 class faceWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.button = QPushButton('出席登録', self)
-        self.button.clicked.connect(self.cam)
-    
-    name_test = "test"
+        self.torokubutton = QPushButton('出席登録', self)
+        self.torokubutton.clicked.connect(self.tojiro2)
+    def tojiro2(self):
+        now=datetime.datetime.now()
+        print(jpholiday.year_holidays(now.year))
+        self.close()     
 
-    def cam(test):
-        cap = cv2.VideoCapture(0)
-        cas = cv2.CascadeClassifier(cv2.data.haarcascades+"haarcascade_frontalface_default.xml")
-        while True:
-            ret,frame = cap.read()
-            gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-            face = cas.detectMultiScale(gray)
-            if np.all(face != None):
-                cv2.imwrite("test.jpg",frame)
-                break
-            cv2.imshow("",frame)
-        cap.release()
-    cam(name_test)    
-
-    img_test = ft.BGR2RGB(name_test)
-    img_test,encode_test = ft.detect(img_test)
-
-    with open('face_list.pickle','rb') as f:
-        encode = pickle.load(f)
-    results,face_distance = ft.recognition(encode,encode_test)
-    print(results,face_distance)
 
 
 #ここから下は変更NG
