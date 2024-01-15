@@ -1,4 +1,5 @@
 """
+山本、
 大規模python開発に挑戦！
 要件定義
 ・データベース(sql):attendテーブル、recordテーブル、holidayテーブル
@@ -79,7 +80,7 @@ class Main(QWidget):
     
     def initUi(self):#UI関係の表示設定
         self.button = QPushButton('出席登録', self)
-        self.button.clicked.connect(self.tojiro)
+        self.button.clicked.connect()
     
     #サンプル1(消してもOK)
     def tojiro(self):
@@ -90,12 +91,13 @@ class Main(QWidget):
 class AnotherWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.button = QPushButton('出席登録', self)
-        self.button.clicked.connect(self.tojiro2)
+        self.torokubutton = QPushButton('出席登録', self)
+        self.torokubutton.clicked.connect(self.tojiro2)
     def tojiro2(self):
         now=datetime.datetime.now()
         print(jpholiday.year_holidays(now.year))
         self.close()     
+
 
 
 #ここから下は変更NG
