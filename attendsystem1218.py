@@ -1,4 +1,5 @@
 """
+なぐら
 大規模python開発に挑戦！
 要件定義
 ・データベース(sql):attendテーブル、recordテーブル、holidayテーブル
