@@ -1,4 +1,5 @@
 """
+浅久野、
 大規模python開発に挑戦！
 要件定義
 ・データベース(sql):attendテーブル、recordテーブル、holidayテーブル
@@ -65,6 +66,8 @@ import sqlite3
 import datetime
 import jpholiday
 from PyQt6.QtWidgets import QPushButton
+import face_recognition_test as ft
+
 root = Tk()
 monitor_height = root.winfo_screenheight()
 monitor_width = root.winfo_screenwidth()
@@ -90,12 +93,7 @@ class Main(QWidget):
 class AnotherWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.button = QPushButton('出席登録', self)
-        self.button.clicked.connect(self.tojiro2)
-    def tojiro2(self):
-        now=datetime.datetime.now()
-        print(jpholiday.year_holidays(now.year))
-        self.close()     
+        ft.Main()
 
 
 #ここから下は変更NG
