@@ -66,7 +66,7 @@ import sqlite3
 import datetime
 from PyQt6.QtWidgets import QPushButton
 import face_recognition_test as ft
-
+import jpholiday
 root = Tk()
 monitor_height = root.winfo_screenheight()
 monitor_width = root.winfo_screenwidth()
