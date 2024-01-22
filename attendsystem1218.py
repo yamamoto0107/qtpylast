@@ -93,7 +93,7 @@ class faceWindow(QWidget):
         now=datetime.datetime.now()
         print(jpholiday.year_holidays(now.year))
         self.close()     
->>>>>>> b7feece67ca2df9cc7ccac6de686858ecb5856ed
+
 
 
 
