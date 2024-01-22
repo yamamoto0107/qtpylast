@@ -37,7 +37,7 @@ class FaceWindow(QWidget):
     def initUi(self):
         self.label = QLineEdit(self)
         self.label.resize(170, 30)
-        self.label.move(120, 50)
+        self.label.move(100, 50)
         self.button = QPushButton("登録", self)
         self.button.move(100, 10)
         self.button1 = QPushButton("出席", self)
