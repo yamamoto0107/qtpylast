@@ -1,18 +1,17 @@
 import sqlite3
 
-def createrecord():
-    dbname = 'recordsystem.db'
+def createattend():
+    dbname = 'record.db'
     conn = sqlite3.connect(dbname)
     #SQLを操作するカーソルオブジェクトを作成
     c = conn.cursor()
-    sql="""CREATE TABLE attend(
+    sql="""CREATE TABLE record(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         number INTEGER,
-        name VARCHAR(20),
-        kana VARCHAR(50),
-        gender VARCHAR(10),
-        mail VARCHAR(100),
-        abbre VARCHAR(50)
+        data VARCHAR(20),
+        reason VARCHAR(100),
+        frame_num VARCHAR(10),
+        late_num Boolean
         );
         """
 

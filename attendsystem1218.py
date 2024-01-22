@@ -1,5 +1,5 @@
 """
-山本、なぐら
+茂籠、坂口、河野、島谷
 大規模python開発に挑戦！
 要件定義
 ・データベース(sql):attendsystem.dbにattendテーブル、recordテーブル、holidayテーブル
@@ -64,9 +64,8 @@ import sys
 from tkinter import Tk
 import sqlite3
 import datetime
-from PyQt6.QtWidgets import QPushButton
-import face_recognition_test as ft
-
+import jpholiday
+from PyQt6.QtWidgets import QPushButton,QLineEdit,QLabel
 root = Tk()
 monitor_height = root.winfo_screenheight()
 monitor_width = root.winfo_screenwidth()
@@ -80,30 +79,53 @@ class Main(QWidget):
         self.initUi()
     
     def initUi(self):#UI関係の表示設定
-        self.button = QPushButton('出席登録', self)
-<<<<<<< HEAD
-        self.button.clicked.connect(self.faceWindow)
-=======
-        self.button.clicked.connect()
+        self.lavel_1 = QLabel('学籍番号',self)
+        self.txt_number = QLineEdit('',self)
+        self.lavel_2 = QLabel('日付',self)
+        self.txt_day = QLineEdit('',self)
+        self.lavel_3 = QLabel('理由',self)
+        self.txt_reason = QLineEdit('',self)
+        self.button = QPushButton('公欠登録', self)
+
+        self.button.setGeometry(50,140,150,30)
+        self.txt_number.setGeometry(50,10,150,30)
+        self.lavel_1.setGeometry(0,10,150,30)
+        self.txt_day.setGeometry(50,50,150,30)
+        self.lavel_2.setGeometry(0,50,150,30)
+        self.txt_reason.setGeometry(50,90,150,50)
+        self.lavel_3.setGeometry(0,90,150,30)
+
+        # データベースファイルのパスを設定
+        db_name = 'record.db'
+        # データベースに接続
+        con = sqlite3.connect(db_name)
+        # データベースを操作するカーソルを作成
+        cur = con.cursor()
+        # Select文を作成
+        table="record"
+        sql = f'INSERT INTO {table} (id, date, reason) ()' # テーブル名は適宜設定してください
+        # SQLを実行
+        cur.execute(sql)
+        # SQLの結果を出力
+        # データベース接続を終了
+        con.close()
+        self.button.clicked.connect(self.tojiro)
     
     #サンプル1(消してもOK)
     def tojiro(self):
         self.w = AnotherWindow()
         self.w.show()
->>>>>>> b7feece67ca2df9cc7ccac6de686858ecb5856ed
 
-#顔認識開始
-class faceWindow(QWidget):
+#サンプル2(消してもOK)
+class AnotherWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.torokubutton = QPushButton('出席登録', self)
-        self.torokubutton.clicked.connect(self.tojiro2)
+        self.button = QPushButton('公欠登録', self)
+        self.button.clicked.connect(self.tojiro2)
     def tojiro2(self):
         now=datetime.datetime.now()
         print(jpholiday.year_holidays(now.year))
         self.close()     
->>>>>>> b7feece67ca2df9cc7ccac6de686858ecb5856ed
-
 
 
 #ここから下は変更NG
