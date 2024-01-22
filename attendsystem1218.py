@@ -27,6 +27,7 @@ class Main(QWidget):
     def team1(self):
         self.w1 = FaceWindow()
         self.w1.show()
+        
 # 顔認識
 class FaceWindow(QWidget):
     def __init__(self):
@@ -44,6 +45,12 @@ class FaceWindow(QWidget):
         self.button1.move(200, 10)
         self.button.clicked.connect(self.toroku)
         self.button1.clicked.connect(self.syusseki)
+        self.button2 = QPushButton("終了", self)
+        self.button2.move(100, 90)
+        self.button2.clicked.connect(self.close)
+        self.button3 = QPushButton("訂正", self)
+        self.button3.move(200, 90)
+        self.button3.clicked.connect(self.syusseki)
 
     def toroku(self):
         self.w = up.Main()
