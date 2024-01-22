@@ -65,7 +65,6 @@ from tkinter import Tk
 import sqlite3
 import datetime
 from PyQt6.QtWidgets import QPushButton
-import face_recognition_test as ft
 
 root = Tk()
 monitor_height = root.winfo_screenheight()
@@ -81,29 +80,34 @@ class Main(QWidget):
     
     def initUi(self):#UI関係の表示設定
         self.button = QPushButton('出席登録', self)
-<<<<<<< HEAD
-        self.button.clicked.connect(self.faceWindow)
-=======
-        self.button.clicked.connect()
-    
-    #サンプル1(消してもOK)
-    def tojiro(self):
-        self.w = AnotherWindow()
-        self.w.show()
->>>>>>> b7feece67ca2df9cc7ccac6de686858ecb5856ed
+        self.button.clicked.connect(self.make_data)
 
-#顔認識開始
-class faceWindow(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.torokubutton = QPushButton('出席登録', self)
-        self.torokubutton.clicked.connect(self.tojiro2)
-    def tojiro2(self):
-        now=datetime.datetime.now()
-        print(jpholiday.year_holidays(now.year))
-        self.close()     
->>>>>>> b7feece67ca2df9cc7ccac6de686858ecb5856ed
+    def make_data(self):
+        # データベースに接続（存在しない場合は新規作成）
+        conn = sqlite3.connect('attend.db')
 
+        # カーソルの作成
+        cursor = conn.cursor()
+
+        # # テーブルの作成
+        # cursor.execute('''
+        #     CREATE TABLE attend (
+        #         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        #         number INTEGER,
+        #         name STRING,
+        #         kana STRING,
+        #         gender STRING,
+        #         mail STRING,
+        #         abbre STRING
+        #     )
+        # ''')
+
+        # データ登録
+        cursor.execute('INSERT INTO attend values(1, 22003, "今村　陽仁", "いまむら　はると", "男", "mail_address", "ima")')
+
+        conn.commit()
+
+        cursor.close()
 
 
 #ここから下は変更NG
