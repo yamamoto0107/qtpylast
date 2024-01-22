@@ -21,16 +21,12 @@ class Main(QWidget):
     
     def initUi(self):
         self.button = QPushButton('出席登録', self)
-
-        self.button.clicked.connect(self.faceWindow)
-
-        self.button.clicked.connect()
+        self.button.clicked.connect(self.team1)
     
     #サンプル1(消してもOK)
-    def tojiro(self):
-        self.w = FaceWindow()
-        self.w.show()
-
+    def team1(self):
+        self.w1 = FaceWindow()
+        self.w1.show()
 # 顔認識
 class FaceWindow(QWidget):
     def __init__(self):
