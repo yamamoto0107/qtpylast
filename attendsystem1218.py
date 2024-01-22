@@ -81,16 +81,7 @@ class Main(QWidget):
     
     def initUi(self):#UI関係の表示設定
         self.button = QPushButton('出席登録', self)
-<<<<<<< HEAD
         self.button.clicked.connect(self.faceWindow)
-=======
-        self.button.clicked.connect()
-    
-    #サンプル1(消してもOK)
-    def tojiro(self):
-        self.w = AnotherWindow()
-        self.w.show()
->>>>>>> b7feece67ca2df9cc7ccac6de686858ecb5856ed
 
 #顔認識開始
 class faceWindow(QWidget):
