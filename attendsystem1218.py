@@ -66,6 +66,7 @@ import sqlite3
 import datetime
 from PyQt6.QtWidgets import QPushButton
 import face_recognition_test as ft
+import jpholiday
 
 root = Tk()
 monitor_height = root.winfo_screenheight()
@@ -81,19 +82,15 @@ class Main(QWidget):
     
     def initUi(self):#UI関係の表示設定
         self.button = QPushButton('出席登録', self)
-<<<<<<< HEAD
-        self.button.clicked.connect(self.faceWindow)
-=======
-        self.button.clicked.connect()
-    
-    #サンプル1(消してもOK)
-    def tojiro(self):
-        self.w = AnotherWindow()
-        self.w.show()
->>>>>>> b7feece67ca2df9cc7ccac6de686858ecb5856ed
+        self.button.clicked.connect(self.team1)
+        self.button1 = QPushButton('公欠登録',self)
+        
+    def team1(self):
+        self.w1 = FaceWindow()
+        self.w1.show()
 
 #顔認識開始
-class faceWindow(QWidget):
+class FaceWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.torokubutton = QPushButton('出席登録', self)
@@ -102,8 +99,6 @@ class faceWindow(QWidget):
         now=datetime.datetime.now()
         print(jpholiday.year_holidays(now.year))
         self.close()     
->>>>>>> b7feece67ca2df9cc7ccac6de686858ecb5856ed
-
 
 
 #ここから下は変更NG
