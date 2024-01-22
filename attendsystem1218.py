@@ -106,9 +106,6 @@ class AnotherWindow(QWidget):
         print(jpholiday.year_holidays(now.year))
         self.close() 
 
-class SyusekiWindow(QWidget):
-        
-
 
 
 #ここから下は変更NG

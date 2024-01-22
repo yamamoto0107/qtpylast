@@ -3,7 +3,7 @@ import sys
 from tkinter import Tk
 import sqlite3
 import datetime
-import jpholiday
+#import jpholiday
 from PyQt6.QtWidgets import QPushButton
 root = Tk()
 monitor_height = root.winfo_screenheight()
@@ -56,7 +56,26 @@ class Main(QWidget):
             self.w = AnotherWindow(self.number.text(), self.year.text(),self.month.currentText())
             self.w.show()
 
-class AnotherWindow(QWidget):
+class AnotherWindow(QWidget):# 出席コマの検査59から74まで追加
+    def susseki():
+        conn = sqlite3.connect('recordsystem.db')
+        cursor = conn.cursor()
+        table_name = 'record'
+        query = f"SELECT COUNT(*) FROM {table_name}"
+        cursor.execute(query)
+        result = cursor.fetchall()
+        row_count = result[0]
+        
+        for item in result:
+            print(item[0])
+        
+
+        #for i in row_count:
+         #   if (self.number == ):
+
+
+
+
     def __init__(self,number,year,month):
         super().__init__()
         # グリッド(Grid)レイアウトの作成とメインウィンドウへの設定
@@ -77,6 +96,7 @@ class AnotherWindow(QWidget):
         grid_layout.addWidget(self.label4,1,4)
         grid_layout.addWidget(self.label5,1,5)
 
+    
 #ここから下は変更NG
 if __name__ == '__main__':
     App = QApplication(sys.argv)
