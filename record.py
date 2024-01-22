@@ -7,8 +7,8 @@ def createattend():
     c = conn.cursor()
     sql="""CREATE TABLE record(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        number INTEGER,
-        data VARCHAR(20),
+        number VARCHAR(20),
+        date date,
         reason VARCHAR(100),
         frame_num VARCHAR(10),
         late_num Boolean

@@ -65,7 +65,9 @@ from tkinter import Tk
 import sqlite3
 import datetime
 import jpholiday
-from PyQt6.QtWidgets import QPushButton,QLineEdit,QLabel
+from PyQt6.QtWidgets import QPushButton,QLineEdit,QLabel,QDateEdit
+from PyQt6.QtCore import QDate
+
 root = Tk()
 monitor_height = root.winfo_screenheight()
 monitor_width = root.winfo_screenwidth()
@@ -77,12 +79,16 @@ class Main(QWidget):
         self.setWindowTitle('JECAIportal') # ウィンドウのタイトル
         self.setGeometry(0,0,monitor_width,monitor_height) # ウィンドウの位置と大きさ
         self.initUi()
+        
     
     def initUi(self):#UI関係の表示設定
         self.lavel_1 = QLabel('学籍番号',self)
         self.txt_number = QLineEdit('',self)
         self.lavel_2 = QLabel('日付',self)
-        self.txt_day = QLineEdit('',self)
+        initial_date = QDate(2023, 1, 1)
+        # 日付入力用のウィジェットを作成
+        self.txt_day = QDateEdit(self)
+        self.txt_day.setDate(initial_date)
         self.lavel_3 = QLabel('理由',self)
         self.txt_reason = QLineEdit('',self)
         self.button = QPushButton('公欠登録', self)
@@ -95,22 +101,31 @@ class Main(QWidget):
         self.txt_reason.setGeometry(50,90,150,50)
         self.lavel_3.setGeometry(0,90,150,30)
 
+        
+
+        # 日付が変更されたときのシグナルに対するスロットを設定
+        self.txt_day.dateChanged.connect(self.onDateChanged)
+        self.button.clicked.connect(self.insert)
+    def onDateChanged(self, date):
+        # 日付が変更されたときの処理
+        self.label.setText(f'選択された日付: {date.toString("yyyy-MM-dd")}')
+    def insert(self):
         # データベースファイルのパスを設定
         db_name = 'record.db'
         # データベースに接続
-        con = sqlite3.connect(db_name)
+        self.con = sqlite3.connect(db_name)
         # データベースを操作するカーソルを作成
-        cur = con.cursor()
+        self.cur = self.con.cursor()
         # Select文を作成
         table="record"
-        sql = f'INSERT INTO {table} (id, date, reason) ()' # テーブル名は適宜設定してください
-        # SQLを実行
-        cur.execute(sql)
+        sql = f"insert into {table} (number, data, reason) values (?, ?, ?)"
+        self.cur.execute(sql, (self.txt_number.text(), self.txt_day.text(), self.txt_reason.text()))
+
+        self.con.commit()
         # SQLの結果を出力
+
         # データベース接続を終了
-        con.close()
-        self.button.clicked.connect(self.tojiro)
-    
+        self.con.close()
     #サンプル1(消してもOK)
     def tojiro(self):
         self.w = AnotherWindow()
@@ -125,8 +140,7 @@ class AnotherWindow(QWidget):
     def tojiro2(self):
         now=datetime.datetime.now()
         print(jpholiday.year_holidays(now.year))
-        self.close()     
-
+        self.close()  
 
 #ここから下は変更NG
 if __name__ == '__main__':
