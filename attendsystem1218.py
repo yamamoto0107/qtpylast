@@ -51,6 +51,7 @@ class FaceWindow(QWidget):
         self.button3 = QPushButton("訂正", self)
         self.button3.move(200, 90)
         self.button3.clicked.connect(self.syusseki)
+        # ↑recordを削除する処理が必要
 
     def toroku(self):
         self.w = up.Main()
