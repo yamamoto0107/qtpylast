@@ -83,6 +83,8 @@ class Main(QWidget):
     def initUi(self):#UI関係の表示設定
         self.button = QPushButton('出席登録', self)
         self.button.clicked.connect()
+        self.button1 = QPushButton('公欠登録',self)
+        self.button1.clicked.connect()
     
     #サンプル1(消してもOK)
     def tojiro(self):
