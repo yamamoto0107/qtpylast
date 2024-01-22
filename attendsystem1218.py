@@ -91,6 +91,10 @@ class Main(QWidget):
         self.w = AnotherWindow()
         self.w.show()
 
+    def team3(self):
+        self.w3 = SyusekiWindow()
+        self.w3.show()
+
 #サンプル2(消してもOK)
 class AnotherWindow(QWidget):
     def __init__(self):
@@ -100,7 +104,10 @@ class AnotherWindow(QWidget):
     def tojiro2(self):
         now=datetime.datetime.now()
         print(jpholiday.year_holidays(now.year))
-        self.close()     
+        self.close() 
+
+class SyusekiWindow(QWidget):
+        
 
 
 
