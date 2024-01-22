@@ -1,9 +1,11 @@
-import sys
+﻿import sys
 from tkinter import Tk
-import sqlite3
-import datetime
-from PyQt6.QtWidgets import QPushButton
+from PyQt6.QtWidgets import QPushButton, QLabel,QApplication, QPushButton, QWidget, QLineEdit
 import face_recognition_test as ft
+import numpy as np
+import face_signup as up
+import face_signin as signin
+import sqlite3
 
 root = Tk()
 monitor_height = root.winfo_screenheight()
@@ -19,14 +21,14 @@ class Main(QWidget):
     
     def initUi(self):
         self.button = QPushButton('出席登録', self)
-<<<<<<< HEAD
+
         self.button.clicked.connect(self.faceWindow)
-=======
+
         self.button.clicked.connect()
     
     #サンプル1(消してもOK)
     def tojiro(self):
-        self.w = AnotherWindow()
+        self.w = FaceWindow()
         self.w.show()
 
 # 顔認識
@@ -52,7 +54,7 @@ class FaceWindow(QWidget):
 
     def syusseki(self):
         self.w = signin.main()
-        self.label.setText(self.w)
+        self.label.setText(self.w + "さんおはようございます！")
 
 
     
