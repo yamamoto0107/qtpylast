@@ -1,5 +1,4 @@
 import sqlite3
-import re
 from datetime import datetime, time
 
 # データベースに接続（存在しない場合は新規作成）
