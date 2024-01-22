@@ -39,7 +39,7 @@ def detect(img):
 
 def recognition(encode,encode_test):
     #顔識別で、リスト内に同じ顔があるか判別する
-    results=face_recognition.compare_faces(encode,encode_test)
+    results=face_recognition.compare_faces(encode,encode_test,tolerance=0.4)
     face_distance=face_recognition.face_distance(encode,encode_test)
     return results,face_distance
 
@@ -59,11 +59,11 @@ def face_img(img_test,results,face_distance):
 if __name__ == "__main__":
     name ="asakuno"
     name_test="asakuno_test"
-    camera(name_test)
-def Main():
+    camera(name)
     img =BGR2RGB(name)
     img,encode = detect(img)
-    
+
+    camera(name_test)
     img_test =BGR2RGB(name_test)
     img_test,encode_test = detect(img_test)
     
