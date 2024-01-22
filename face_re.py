@@ -1,5 +1,4 @@
-﻿from unittest import result
-import cv2
+﻿import cv2
 import face_recognition
 import numpy as np
 
