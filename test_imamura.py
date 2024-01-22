@@ -24,5 +24,6 @@ cursor_recode = conn_recode.cursor()
 inserts = [22001,"浅久野　大智","アサクノ ダイチ","男","meado"]
 cursor_attend.execute('INSERT INTO attend (number,name,kana,gender,mail) VALUES(?,?,?,?,?)', inserts)
 
+conn_attend.commit()
 cursor_attend.close()
 cursor_recode.close()
