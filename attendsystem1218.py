@@ -83,11 +83,16 @@ class Main(QWidget):
     def initUi(self):#UI関係の表示設定
         self.button = QPushButton('出席登録', self)
         self.button.clicked.connect()
+        self.button2.clicked.connect(self.team3)
     
     #サンプル1(消してもOK)
     def tojiro(self):
         self.w = AnotherWindow()
         self.w.show()
+
+    def team3(self):
+        self.w3 = SyusekiWindow()
+        self.w3.show()
 
 #サンプル2(消してもOK)
 class AnotherWindow(QWidget):
@@ -98,7 +103,10 @@ class AnotherWindow(QWidget):
     def tojiro2(self):
         now=datetime.datetime.now()
         print(jpholiday.year_holidays(now.year))
-        self.close()     
+        self.close() 
+
+class SyusekiWindow(QWidget):
+        
 
 
 

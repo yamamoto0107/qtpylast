@@ -16,6 +16,8 @@ def createattend():
         );
         """
 
+
+
     conn.execute(sql)
     conn.close()
 createattend()
