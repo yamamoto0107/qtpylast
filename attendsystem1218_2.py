@@ -17,10 +17,12 @@ class Main(QWidget):
         super().__init__()
         self.setWindowTitle('JECAIportal') # ウィンドウのタイトル
         self.setGeometry(0,0,monitor_width,monitor_height) # ウィンドウの位置と大きさ
+        self.resize(230, 170)
         self.initUi()
     
     def initUi(self):
         self.button = QPushButton('出席登録', self)
+        self.button.setGeometry(25,25,150,100)
         self.button.clicked.connect(self.team1)
     
     #サンプル1(消してもOK)
@@ -34,6 +36,7 @@ class FaceWindow(QWidget):
         super().__init__()
         self.setWindowTitle('JECAIportal') # ウィンドウのタイトル
         self.setGeometry(0,0,monitor_width,monitor_height) # ウィンドウの位置と大きさ
+        self.resize(425, 150)
         self.initUi()
     def initUi(self):
         self.label = QLineEdit(self)
