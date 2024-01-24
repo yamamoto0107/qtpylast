@@ -50,7 +50,7 @@ class FaceWindow(QWidget):
         self.button2.clicked.connect(self.close)
         self.button3 = QPushButton("訂正", self)
         self.button3.move(200, 90)
-        self.button3.clicked.connect(self.syusseki)
+        self.button3.clicked.connect(self.syusei)
         # ↑recordを削除する処理が必要
 
     def toroku(self):
@@ -61,7 +61,32 @@ class FaceWindow(QWidget):
         self.w = signin.main()
         self.label.setText(self.w + "さんおはようございます！")
         self.attend()
+    
+    def syusei(self):
+        skj = sqlite3.connect('record.db')
+        cursor = skj.cursor()
 
+        try:
+            # 最後の行を取得
+            cursor.execute('SELECT id FROM record ORDER BY id DESC LIMIT 1;')
+            last_id = cursor.fetchone()
+
+            if last_id:
+                # 最後の行を削除
+                cursor.execute('DELETE FROM record WHERE id = ?;', (last_id[0],))
+                skj.commit()
+                #print(f"ID {last_id[0]} の行を削除しました。")
+                self.label.setText(f"ID {last_id[0]} の行を削除しました。")
+            else:
+                print("テーブルが空です。")
+
+        except sqlite3.Error as e:
+            print(f"エラー: {e}")
+
+        finally:
+            skj.close()
+
+    
     def attend(self):
         # 学籍番号
         number = self.w
@@ -113,7 +138,7 @@ class FaceWindow(QWidget):
         # recordからデータ取得
         cursor_record.execute('SELECT * FROM record WHERE number={} AND frame_num={}'.format(number, frame_num))
         rows = cursor_record.fetchall()
-        inserts = [str(number), today, frame_num, late_num]
+        inserts = [number, today, frame_num, late_num]
 
         if rows == []: # 登録されていなかったら
             # recordデータ登録
@@ -125,6 +150,8 @@ class FaceWindow(QWidget):
 
         cursor_attend.close()
         cursor_record.close()
+        
+        
     
 #ここから下は変更NG
 if __name__ == '__main__':
