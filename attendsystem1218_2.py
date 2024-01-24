@@ -68,11 +68,11 @@ class FaceWindow(QWidget):
 
         # データベースに接続（存在しない場合は新規作成）
         conn_attend = sqlite3.connect('attend.db')
-        conn_recode = sqlite3.connect('recode.db')
+        conn_record = sqlite3.connect('record.db')
 
         # カーソルの作成
         cursor_attend = conn_attend.cursor()
-        cursor_recode = conn_recode.cursor()
+        cursor_record = conn_record.cursor()
 
         # frame_numの算出（何時間目か）
         today = datetime.now().date() # 本日の日付を取得
@@ -110,21 +110,21 @@ class FaceWindow(QWidget):
         if frame4_late_datetime < time_now <= frame4_end_datetime:
             late_num = 1
 
-        # recodeからデータ取得
-        cursor_recode.execute('SELECT * FROM recode WHERE number={} AND frame_num={}'.format(number, frame_num))
-        rows = cursor_recode.fetchall()
-        inserts = [number, today, frame_num, late_num]
+        # recordからデータ取得
+        cursor_record.execute('SELECT * FROM record WHERE number={} AND frame_num={}'.format(number, frame_num))
+        rows = cursor_record.fetchall()
+        inserts = [str(number), today, frame_num, late_num]
 
         if rows == []: # 登録されていなかったら
-            # recodeデータ登録
-            cursor_recode.execute('INSERT INTO recode (number, date, frame_num, late_num) values(?,?,?,?)', inserts)
+            # recordデータ登録
+            cursor_record.execute('INSERT INTO record (number, date, frame_num, late_num) values(?,?,?,?)', inserts)
         else:
             print(inserts, "登録済です")
 
-        conn_recode.commit()
+        conn_record.commit()
 
         cursor_attend.close()
-        cursor_recode.close()
+        cursor_record.close()
     
 #ここから下は変更NG
 if __name__ == '__main__':

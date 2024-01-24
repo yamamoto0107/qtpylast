@@ -3,17 +3,17 @@ import sqlite3
 
 # データベースに接続（存在しない場合は新規作成）
 conn_attend = sqlite3.connect('attend.db')
-conn_recode = sqlite3.connect('recode.db')
+conn_record = sqlite3.connect('record.db')
 
 # カーソルの作成
 cursor_attend = conn_attend.cursor()
-cursor_recode = conn_recode.cursor()
+cursor_record = conn_record.cursor()
 
 #テーブルの作成
-# cursor_recode.execute('''
-#     CREATE TABLE recode (
+# cursor_record.execute('''
+#     CREATE TABLE record (
 #         id INTEGER PRIMARY KEY AUTOINCREMENT,
-#         number INTEGER,
+#         number STRING,
 #         date DATE,
 #         reason TEXT,
 #         frame_num INTEGER,
@@ -21,9 +21,9 @@ cursor_recode = conn_recode.cursor()
 #     )
 # ''')
 
-inserts = [22001,"浅久野　大智","アサクノ ダイチ","男","meado"]
+inserts = [22001,"浅久野　大智","いまむら　はると","男","mail_address"]
 cursor_attend.execute('INSERT INTO attend (number,name,kana,gender,mail) VALUES(?,?,?,?,?)', inserts)
 
 conn_attend.commit()
 cursor_attend.close()
-cursor_recode.close()
+cursor_record.close()
