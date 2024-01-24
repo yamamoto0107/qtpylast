@@ -89,7 +89,7 @@ class FaceWindow(QWidget):
     
     def attend(self):
         # 学籍番号
-        number = self.w
+        number = str(self.w)
 
         # データベースに接続（存在しない場合は新規作成）
         conn_attend = sqlite3.connect('attend.db')
