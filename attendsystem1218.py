@@ -142,7 +142,13 @@ class KakuninWindow(QWidget):
         self.torokubutton.clicked.connect(self.tojiro)
     def tojiro(self):
         self.close()
-
+class SyusekiWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.torokubutton = QPushButton('出席登録', self)
+        self.torokubutton.clicked.connect(self.tojiro)
+    def tojiro(self):
+        self.close()
 class KyoshiWindow(QWidget):
     def __init__(self):
         super().__init__()
