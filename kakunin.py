@@ -71,7 +71,7 @@ class AnotherWindow(QWidget):# 出席コマの検査59から74まで追加
         
 
         #for i in row_count:
-         #   if (self.number == ):
+        #   if (self.number == ):
 
 
 
