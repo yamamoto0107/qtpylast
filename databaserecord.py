@@ -14,6 +14,11 @@ def createrecord():
         late_num BIT(1)
         );
         """
-    conn.execute(sql)
+    sql2="""INSERT INTO record (number,date,late_num) VALUES('AI22015','0124','0'),
+						('AI22015','0130','1'),
+						('AI22015','0101','1'),
+						('AI22015','1212','1'),
+                        ('AI22015','0114','0');"""
+    conn.execute(sql2)
     conn.close() 
 createrecord()
