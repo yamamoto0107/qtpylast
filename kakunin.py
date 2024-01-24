@@ -58,20 +58,18 @@ class Main(QWidget):
 
 class AnotherWindow(QWidget):# 出席コマの検査59から74まで追加
     def susseki():
-        conn = sqlite3.connect('recordsystem.db')
+        conn = sqlite3.connect('record.db')
         cursor = conn.cursor()
         table_name = 'record'
-        query = f"SELECT COUNT(*) FROM {table_name}"
-        cursor.execute(query)
+        query = f"SELECT * ,
+                FROM record,
+                WHERE number = (self.number) AND date = (self.month)
+                "
+        
         result = cursor.fetchall()
-        row_count = result[0]
-        
-        for item in row_count:
-            print(item[0])
-        
 
-        #for i in row_count:
-         #   if (self.number == ):
+        print(result)
+
 
 
 
