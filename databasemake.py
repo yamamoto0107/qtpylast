@@ -1,7 +1,7 @@
 import sqlite3
 
 def createattend():
-    dbname = 'attendsystem.db'
+    dbname = 'attend.db'
     conn = sqlite3.connect(dbname)
     #SQLを操作するカーソルオブジェクトを作成
     c = conn.cursor()

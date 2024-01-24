@@ -66,7 +66,7 @@ class AnotherWindow(QWidget):# 出席コマの検査59から74まで追加
         result = cursor.fetchall()
         row_count = result[0]
         
-        for item in result:
+        for item in row_count:
             print(item[0])
         
 

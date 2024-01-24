@@ -1,13 +1,13 @@
 import sqlite3
 
 def createrecord():
-    dbname = 'recordsystem.db'
+    dbname = 'record.db'
     conn = sqlite3.connect(dbname)
     #SQLを操作するカーソルオブジェクトを作成
     c = conn.cursor()
     sql="""CREATE TABLE record(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        number INTEGER,
+        number VARCHAR(20),
         date VARCHAR(20),
         reason VARCHAR(50),
         frame_num VARCHAR(10),

@@ -1,7 +1,7 @@
 import sqlite3
 
 def createholiday():
-    dbname = 'holidaysystem.db'
+    dbname = 'holiday.db'
     conn = sqlite3.connect(dbname)
     #SQLを操作するカーソルオブジェクトを作成
     c = conn.cursor()
