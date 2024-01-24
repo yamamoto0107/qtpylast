@@ -67,6 +67,7 @@ class Main(QtWidgets.QWidget):
             encode_list.append(encode)
         self.dump('name_list.pickle',namelist)
         self.dump('face_list.pickle',encode_list)
+        self.label2.setText("ユーザーが登録されました。")
         print("ユーザーが登録されました。")
 
     def closeEvent(self, event):
@@ -84,11 +85,13 @@ class Main(QtWidgets.QWidget):
     def gui(self):
         self.label = QtWidgets.QLabel(self)
         self.label1 = QtWidgets.QLabel("学籍番号を入力してください。",self)
+        self.label2 = QtWidgets.QLabel("",self)
         self.line = QtWidgets.QLineEdit(self)
         self.button = QtWidgets.QPushButton('登録', self)
         vbox = QtWidgets.QVBoxLayout()
         vbox.addWidget(self.label1)
         vbox.addWidget(self.line)
+        vbox.addWidget(self.label2)
         vbox.addWidget(self.button)
         vbox.addWidget(self.label)
         self.setLayout(vbox)

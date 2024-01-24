@@ -62,7 +62,6 @@ class FaceWindow(QWidget):
         self.label.setText(self.w + "さんおはようございます！")
 
 
-    
 #ここから下は変更NG
 if __name__ == '__main__':
     App = QApplication(sys.argv)
