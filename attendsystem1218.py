@@ -1,4 +1,6 @@
 """
+高運岐　山口　白石　宮脇
+
 大規模python開発に挑戦！
 要件定義
 ・データベース(sql):attendテーブル、recordテーブル、holidayテーブル
@@ -80,6 +82,10 @@ class Main(QWidget):
     def initUi(self):#UI関係の表示設定
         self.button = QPushButton('出席登録', self)
         self.button.clicked.connect(self.tojiro)
+        self.label1 = QLabel("24卒",self)
+        self.label2 = Qlabel("2",self)
+        font = QFont()
+        font.setOointSize(monitor_width/30)7
     
     #サンプル1(消してもOK)
     def tojiro(self):
@@ -93,7 +99,7 @@ class AnotherWindow(QWidget):
         self.button = QPushButton('出席登録', self)
         self.button.clicked.connect(self.tojiro2)
     def tojiro2(self):
-        now=datetime.datetime.now()
+        now=datetime.datetime.now( )
         print(jpholiday.year_holidays(now.year))
         self.close()     
 
