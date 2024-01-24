@@ -8,10 +8,10 @@ def createattend():
     sql="""CREATE TABLE record(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         number VARCHAR(20),
-        date date,
-        reason VARCHAR(100),
+        date VARCHAR(20),
+        reason VARCHAR(50),
         frame_num VARCHAR(10),
-        late_num Boolean
+        late_num BIT(1)
         );
         """
 
