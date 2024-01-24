@@ -21,7 +21,7 @@ cursor_record = conn_record.cursor()
 #     )
 # ''')
 
-inserts = [22001,"浅久野　大智","いまむら　はると","男","mail_address"]
+inserts = ["22005", "國本　洸", "くにもと　ひかる","男","mail_address"]
 cursor_attend.execute('INSERT INTO attend (number,name,kana,gender,mail) VALUES(?,?,?,?,?)', inserts)
 
 conn_attend.commit()
